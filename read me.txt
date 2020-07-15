@@ -1,0 +1,22 @@
+to open the launch file:
+
+open terminal, type,
+
+1. the below comand to control robot using joint state publisher
+
+cd simulation_ws
+
+roslaunch mrm_description rviz.launch
+
+2. the below comand to control robot using rqt publisher
+
+cd simulation_ws
+
+roslaunch mrm_description spawn.launch
+
+3. for rviz moveit
+
+cd simulation_ws
+
+roslaunch moveitt myrobot_planning.launch
+

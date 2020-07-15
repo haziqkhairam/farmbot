@@ -1,0 +1,14 @@
+controller_list:
+  - name: fake_grab_controller
+    joints:
+      - base_link__link_11
+      - link_11__link_22
+      - link_22__link_33
+      - link_33__link_44
+  - name: fake_spray_controller
+    joints:
+      - base_link__link_1
+      - link_1__link_2
+      - link_2__link_3
+      - link_3__link_4
+      - link_4__link_5

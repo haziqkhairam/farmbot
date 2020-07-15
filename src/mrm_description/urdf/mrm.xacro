@@ -1,0 +1,352 @@
+<?xml version="1.0" ?>
+
+<robot name="mrm" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <link name="base_link">
+        <inertial>
+            <mass value="50" />
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <inertia ixx="0.01" ixy="0.01" ixz="0.01" iyy="0.0" iyz="0.0" izz="0.0" />
+        </inertial>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <geometry>
+                <box size="1 0.5 0.5" />
+            </geometry>
+        </collision>
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <geometry>
+                <box size="1 0.5 0.5"/>
+            </geometry>
+        </visual>
+    </link>
+
+    <joint name="base_link__link_1" type="revolute">
+        <axis xyz="0 0 1" />
+        <limit effort="1000.0" lower="-1.6" upper="1.6" velocity="0.5" />
+        <origin rpy="0 0 0" xyz="0.25 0 0.25"/>
+        <parent link="base_link"/>
+        <child link="link_1"/>
+    </joint>
+    <transmission name="trans_base_link__link_1">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="base_link__link_1">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="motor_base_link__link_1">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+
+    <joint name="base_link__link_11" type="revolute">
+        <axis xyz="0 0 1" />
+        <limit effort="1000.0" lower="-2" upper="2" velocity="0.5" />
+        <origin rpy="0 0 0" xyz="-0.25 0 0.25"/>
+        <parent link="base_link"/>
+        <child link="link_11"/>
+    </joint>
+    <transmission name="trans_base_link__link_11">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="base_link__link_11">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="motor_base_link__link_11">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+
+     <link name="link_1">
+        <inertial>
+            <mass value="5" />
+            <origin rpy="0 0 0" xyz="0 0 0.75" />
+            <inertia ixx="0.01" ixy="0.01" ixz="0.01" iyy="0.0" iyz="0.0" izz="0.0" />
+        </inertial>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0.75" />
+            <geometry>
+                <cylinder radius="0.1" length="1.5" />
+            </geometry>
+        </collision>
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0.75"/>
+            <geometry>
+                <cylinder radius="0.1" length="1.5"/>
+            </geometry>
+        </visual>
+    </link>
+
+    <link name="link_11">
+        <inertial>
+            <mass value="5" />
+            <origin rpy="0 0 0" xyz="0 0 0.1" />
+            <inertia ixx="0.01" ixy="0.01" ixz="0.01" iyy="0.0" iyz="0.0" izz="0.0" />
+        </inertial>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0.1" />
+            <geometry>
+                <cylinder radius="0.1" length="0.2" />
+            </geometry>
+        </collision>
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0.1"/>
+            <geometry>
+                <cylinder radius="0.1" length="0.2"/>
+            </geometry>
+        </visual>
+    </link>
+
+    <joint name="link_1__link_2" type="revolute">
+        <axis xyz="0 1 0" />
+        <limit effort="1000.0" lower="-0" upper="0" velocity="0.5" />
+        <origin rpy="0 0 0" xyz="0 0 1.5"/>
+        <parent link="link_1"/>
+        <child link="link_2"/>
+    </joint>
+
+    <joint name="link_11__link_22" type="revolute">
+        <axis xyz="0 1 0" />
+        <limit effort="1000.0" lower="-1.5" upper="0" velocity="0.5" />
+        <origin rpy="0 0 0" xyz="0 0 0.2"/>
+        <parent link="link_11"/>
+        <child link="link_22"/>
+    </joint>
+    <transmission name="trans_link_11__link_22">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="link_11__link_22">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="motor_link_11__link_22">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+
+    <link name="link_2">
+        <inertial>
+            <mass value="5" />
+            <origin rpy="0 0 0" xyz="0.55 0 0" />
+            <inertia ixx="0.01" ixy="0.01" ixz="0.01" iyy="0.0" iyz="0.0" izz="0.0" />
+        </inertial>
+        <collision>
+            <origin rpy="0 0 0" xyz="0.55 0 0" />
+            <geometry>
+                <box size="1.1 0.2 0.2" />
+            </geometry>
+        </collision>
+        <visual>
+            <origin rpy="0 0 0" xyz="0.55 0 0"/>
+            <geometry>
+                <box size="1.1 0.2 0.2"/>
+            </geometry>
+        </visual>
+    </link>
+
+    <link name="link_22">
+        <inertial>
+            <mass value="5" />
+            <origin rpy="0 0 0" xyz="0 0 0.3" />
+            <inertia ixx="0.01" ixy="0.01" ixz="0.01" iyy="0.0" iyz="0.0" izz="0.0" />
+        </inertial>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0.3" />
+            <geometry>
+                <cylinder radius="0.1" length="0.6" />
+            </geometry>
+        </collision>
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0.3"/>
+            <geometry>
+                <cylinder radius="0.1" length="0.6"/>
+            </geometry>
+        </visual>
+    </link>
+
+    <joint name="link_2__link_3" type="revolute">
+        <axis xyz="0 0 1" />
+        <limit effort="1000.0" lower="-3.14" upper="3.14" velocity="0.5" />
+        <origin rpy="0 0 0" xyz="1 0 -0.1"/>
+        <parent link="link_2"/>
+        <child link="link_3"/>
+    </joint>
+    <transmission name="trans_link_2__link_3">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="link_2__link_3">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="motor_link_2__link_3">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+
+    <joint name="link_22__link_33" type="revolute">
+        <axis xyz="0 1 0" />
+        <limit effort="1000.0" lower="-1.5" upper="0" velocity="0.5" />
+        <origin rpy="0 0 0" xyz="0 0 0.6"/>
+        <parent link="link_22"/>
+        <child link="link_33"/>
+    </joint>
+    <transmission name="trans_link_22__link_33">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="link_22__link_33">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="motor_link_22__link_33">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+
+    <link name="link_3">
+        <inertial>
+            <mass value="5" />
+            <origin rpy="0 0 0" xyz="0 0 -0.1" />
+            <inertia ixx="0.01" ixy="0.01" ixz="0.01" iyy="0.0" iyz="0.0" izz="0.0" />
+        </inertial>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 -0.1" />
+            <geometry>
+                <cylinder radius="0.1" length="0.2" />
+            </geometry>
+        </collision>
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 -0.1"/>
+            <geometry>
+                <cylinder radius="0.1" length="0.2"/>
+            </geometry>
+        </visual>
+    </link>
+
+    <link name="link_33">
+        <inertial>
+            <mass value="5" />
+            <origin rpy="0 0 0" xyz="0 0 0.3" />
+            <inertia ixx="0.01" ixy="0.01" ixz="0.01" iyy="0.0" iyz="0.0" izz="0.0" />
+        </inertial>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0.3" />
+            <geometry>
+                <cylinder radius="0.1" length="0.6" />
+            </geometry>
+        </collision>
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0.3"/>
+            <geometry>
+                <cylinder radius="0.1" length="0.6"/>
+            </geometry>
+        </visual>
+    </link>
+
+    <joint name="link_3__link_4" type="revolute">
+        <axis xyz="0 0 1" />
+        <limit effort="1000.0" lower="-0" upper="0" velocity="0.5" />
+        <origin rpy="0 0 0" xyz="0 0 -0.2"/>
+        <parent link="link_3"/>
+        <child link="link_4"/>
+    </joint>
+    <transmission name="trans_link_3__link_4">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="link_3__link_4">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="motor_link_3__link_4">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+
+    <joint name="link_33__link_44" type="revolute">
+        <axis xyz="0 1 0" />
+        <limit effort="1000.0" lower="-1.5" upper="0" velocity="0.5" />
+        <origin rpy="0 0 0" xyz="0 0 0.6"/>
+        <parent link="link_33"/>
+        <child link="link_44"/>
+    </joint>
+    <transmission name="trans_link_33__link_44">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="link_33__link_44">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="motor_link_33__link_44">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+
+    <link name="link_4">
+        <inertial>
+            <mass value="5" />
+            <origin rpy="0 0 0" xyz="0.25 0 0" />
+            <inertia ixx="0.01" ixy="0.01" ixz="0.01" iyy="0.0" iyz="0.0" izz="0.0" />
+        </inertial>
+        <collision>
+            <origin rpy="0 0 0" xyz="0.25 0 0" />
+            <geometry>
+                <box size="0.5 0.2 0.1" />
+            </geometry>
+        </collision>
+        <visual>
+            <origin rpy="0 0 0" xyz="0.25 0 0"/>
+            <geometry>
+                <box size="0.5 0.2 0.1"/>
+            </geometry>
+        </visual>
+    </link>
+
+    <link name="link_44">
+        <inertial>
+            <mass value="5" />
+            <origin rpy="0 0 0" xyz="0 0 0.1" />
+            <inertia ixx="0.01" ixy="0.01" ixz="0.01" iyy="0.0" iyz="0.0" izz="0.0" />
+        </inertial>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0.1" />
+            <geometry>
+                <cylinder radius="0.05" length="0.2" />
+            </geometry>
+        </collision>
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0.1"/>
+            <geometry>
+                <cylinder radius="0.05" length="0.2"/>
+            </geometry>
+        </visual>
+    </link>
+
+    <joint name="link_4__link_5" type="revolute">
+        <axis xyz="0 0 1" />
+        <limit effort="1000.0" lower="-0" upper="0" velocity="0.5" />
+        <origin rpy="0 0 0" xyz="0.5 0 0"/>
+        <parent link="link_4"/>
+        <child link="link_5"/>
+    </joint>
+
+    <link name="link_5">
+        <inertial>
+            <mass value="5" />
+            <origin rpy="0 0 0" xyz="0 0 -0.45" />
+            <inertia ixx="0.01" ixy="0.01" ixz="0.01" iyy="0.0" iyz="0.0" izz="0.0" />
+        </inertial>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 -0.45" />
+            <geometry>
+                <box size="0.02 0.2 0.9" />
+            </geometry>
+        </collision>
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 -0.45"/>
+            <geometry>
+                <box size="0.02 0.2 0.9"/>
+            </geometry>
+        </visual>
+    </link>
+
+    <gazebo>
+        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+        </plugin>
+    </gazebo>
+    
+</robot>
